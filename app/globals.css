@@ -110,4 +110,17 @@ code, pre, .font-mono {
   .card-footer {
     @apply p-3 bg-gray-50 dark:bg-gray-700;
   }
+
+  /* Category Swiper Styles */
+  .category-swiper {
+    @apply w-full px-4;
+  }
+  
+  .category-swiper .swiper-wrapper {
+    transition-timing-function: linear;
+  }
+  
+  .category-swiper .swiper-slide {
+    width: auto !important;
+  }
 }

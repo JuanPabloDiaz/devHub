@@ -6,7 +6,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Container } from '@/components'
+import { Container, CategorySwiper } from '@/components'
 import {
   TbSearch,
   TbRefresh,
@@ -82,6 +82,17 @@ export default function HomePage() {
 
     fetchData()
   }, [])
+
+  // Calculate category counts based on resources
+  const categoriesWithCount = categories.map(category => {
+    const count = resources.filter(resource => 
+      resource.categories && resource.categories.includes(category.name)
+    ).length
+    return {
+      ...category,
+      count
+    }
+  })
 
   // Filter resources based on search term and category
   const filteredResources = resources.filter(resource => {
@@ -193,6 +204,17 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </Container>
+      </div>
+
+      {/* Category Swiper Section */}
+      <div className="bg-gray-50/50 dark:bg-gray-900/50 border-y border-gray-200 dark:border-gray-700">
+        <Container size="lg">
+          <CategorySwiper 
+            categories={categoriesWithCount}
+            selectedCategory={selectedCategory}
+            onCategorySelect={setSelectedCategory}
+          />
         </Container>
       </div>
 
