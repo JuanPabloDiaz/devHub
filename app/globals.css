@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 0, 255, 170; /* neon-green */
+  --primary-dark: 0, 215, 145; /* darker-neon-green */
+  --secondary: 90, 0, 255; /* purple */
+  --accent: 255, 64, 130; /* hot-pink */
+  --background: 249, 250, 251; /* gray-50 */
+  --foreground: 31, 41, 55; /* gray-800 */
+  --card: 255, 255, 255; /* white */
+  --card-border: 229, 231, 235; /* gray-200 */
+  --muted: 107, 114, 128; /* gray-500 */
+  --terminal: 40, 44, 52; /* terminal-dark */
+  --code-bg: 246, 248, 250; /* light code bg */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: 0, 255, 170; /* neon-green */
+    --primary-dark: 0, 215, 145; /* darker-neon-green */
+    --secondary: 138, 43, 226; /* purple */
+    --accent: 255, 64, 130; /* hot-pink */
+    --background: 13, 17, 23; /* github-dark */
+    --foreground: 230, 237, 243; /* light text */
+    --card: 22, 27, 34; /* github-dark-card */
+    --card-border: 48, 54, 61; /* github-dark-border */
+    --muted: 139, 148, 158; /* github-dark-muted */
+    --terminal: 1, 22, 39; /* deep terminal */
+    --code-bg: 22, 27, 34; /* dark code bg */
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  color: rgb(var(--foreground));
+  background: rgb(var(--background));
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-300 inline-flex items-center justify-center gap-2;
+  }
+
+  .btn-primary {
+    @apply bg-[#00ffaa] hover:bg-[#00d791] text-gray-900 font-semibold border border-[#00ffaa]/20 shadow-lg shadow-[#00ffaa]/10;
+  }
+
+  .btn-secondary {
+    @apply bg-[#5a00ff] hover:bg-[#4800cc] text-white border border-[#5a00ff]/20 shadow-lg shadow-[#5a00ff]/10;
+  }
+
+  .btn-accent {
+    @apply bg-[#ff4082] hover:bg-[#e03071] text-white border border-[#ff4082]/20 shadow-lg shadow-[#ff4082]/10;
+  }
+
+  .card {
+    @apply bg-white dark:bg-[rgb(var(--card))] border border-gray-200 dark:border-gray-700 rounded-lg shadow-md overflow-hidden hover:shadow-[#00ffaa]/10 hover:shadow-lg transition-all;
+  }
+
+  .terminal {
+    @apply bg-[rgb(var(--terminal))] text-[#00ffaa] p-4 rounded-md font-mono text-sm leading-relaxed border border-[#00ffaa]/20 shadow-lg shadow-[#00ffaa]/5;
+  }
+
+  .code-block {
+    @apply bg-[rgb(var(--code-bg))] p-4 rounded-md font-mono text-sm leading-relaxed border border-gray-200 dark:border-gray-700 overflow-x-auto;
+  }
+  
+  .resource-card {
+    @apply bg-white dark:bg-[rgb(var(--card))] border border-gray-200 dark:border-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden hover:border-[#00ffaa]/50 dark:hover:border-[#00ffaa]/50;
+  }
+
+  .glow-text {
+    @apply text-[#00ffaa] animate-pulse;
+  }
+
+  .glassmorphism {
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/60;
+  }
+  
+  .grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(0, 255, 170, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 255, 170, 0.05) 1px, transparent 1px);
+  }
+  
+  .dark .grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(0, 255, 170, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 255, 170, 0.05) 1px, transparent 1px);
+  }
+
+  .card-header {
+    @apply p-3 font-bold text-center;
+  }
+
+  .card-body {
+    @apply p-4;
+  }
+
+  .card-footer {
+    @apply p-3 bg-gray-50 dark:bg-gray-700;
+  }
+}

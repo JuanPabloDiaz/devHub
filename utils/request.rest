@@ -1,0 +1,2 @@
+# ::: GET LIST OF RESOURCES 
+GET http://localhost:3000/api/resources
