@@ -1,0 +1,116 @@
+/* Estilos esenciales para Swagger UI en modo oscuro */
+
+/* Colores base para modo oscuro */
+.dark .swagger-ui {
+  color: #e0edf3;
+}
+
+/* Texto y encabezados */
+.dark .swagger-ui .opblock-tag,
+.dark .swagger-ui .opblock .opblock-summary-description,
+.dark .swagger-ui .opblock-description-wrapper p,
+.dark .swagger-ui table thead tr td, 
+.dark .swagger-ui table thead tr th,
+.dark .swagger-ui .opblock .opblock-section-header h4,
+.dark .swagger-ui .parameter__name,
+.dark .swagger-ui .parameter__type,
+.dark .swagger-ui .parameter__in,
+.dark .swagger-ui .renderedMarkdown p {
+  color: #e0edf3 !important;
+}
+
+/* Fondos y contenedores */
+.dark .swagger-ui .opblock,
+.dark .swagger-ui .scheme-container,
+.dark .swagger-ui .opblock-section-header {
+  background-color: #161b22 !important;
+  border-color: #30363d !important;
+}
+
+.dark .swagger-ui .opblock-section-header {
+  background-color: #1c2128 !important;
+}
+
+/* Fondos de los métodos */
+.dark .swagger-ui .opblock-get {
+  background-color: rgba(0, 92, 128, 0.1) !important;
+  border-color: #206685 !important;
+}
+
+.dark .swagger-ui .opblock-post {
+  background-color: rgba(0, 130, 53, 0.1) !important;
+  border-color: #2a7e50 !important;
+}
+
+.dark .swagger-ui .opblock-delete {
+  background-color: rgba(158, 28, 35, 0.1) !important;
+}
+
+/* Tablas y contenido */
+.dark .swagger-ui table tbody tr td {
+  border-color: #30363d !important;
+  color: #c9d1d9 !important;
+  background-color: #1c2128 !important;
+}
+
+/* Modelos de datos */
+.dark .swagger-ui section.models {
+  background-color: #161b22 !important;
+  border-color: #30363d !important;
+}
+
+.dark .swagger-ui section.models .model-container {
+  background-color: #1c2128 !important;
+  border-color: #30363d !important;
+}
+
+/* Código y ejemplos */
+.dark .swagger-ui .microlight {
+  background-color: #161b22 !important;
+  color: #c9d1d9 !important;
+  border-color: #30363d !important;
+}
+
+/* Botones */
+.dark .swagger-ui .btn {
+  background-color: #1c2128 !important;
+  color: #c9d1d9 !important;
+  border-color: #30363d !important;
+}
+
+/* Botón ejecutar */
+.dark .swagger-ui .execute.opblock-control {
+  background-color: #00ffa0 !important;
+  color: #0d1117 !important;
+}
+
+/* Inputs */
+.dark .swagger-ui input,
+.dark .swagger-ui select {
+  background-color: #0d1117 !important;
+  color: #c9d1d9 !important;
+  border-color: #30363d !important;
+}
+
+/* Corrige los íconos de despliegue */
+.dark .swagger-ui .arrow {
+  fill: #8b949e !important;
+}
+
+/* Corrige el esquema desplegado */
+.dark .swagger-ui .model {
+  color: #c9d1d9 !important;
+}
+
+.dark .swagger-ui .model-title {
+  color: #e0edf3 !important;
+}
+
+.dark .swagger-ui .prop-type {
+  color: #79c0ff !important;
+}
+
+/* Asegura que los modelos del fondo tengan buen contraste */
+.dark .swagger-ui section.models .model-container:hover {
+  background-color: #21262d !important;
+}
