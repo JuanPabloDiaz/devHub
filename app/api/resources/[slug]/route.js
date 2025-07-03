@@ -1,5 +1,55 @@
 /**
- * Retrieves details for a specific developer resource by its slug.
+ * @swagger
+ * /resources/{slug}:
+ *   get:
+ *     summary: Get a specific resource by slug
+ *     description: Retrieves details for a specific developer resource identified by its slug
+ *     tags: [Resources]
+ *     parameters:
+ *       - in: path
+ *         name: slug
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Slug of the resource to retrieve
+ *     responses:
+ *       200:
+ *         description: Resource retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 resource:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                     name:
+ *                       type: string
+ *                     slug:
+ *                       type: string
+ *                     description:
+ *                       type: string
+ *                     url:
+ *                       type: string
+ *                     categories:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *                     keywords:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *       404:
+ *         description: Resource not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
  */
 
 import resourcesData from '@/data/db/resources.json'

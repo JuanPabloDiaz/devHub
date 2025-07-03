@@ -1,6 +1,43 @@
 /**
- * Retrieves a list of developer resources from the resources.json file.
- * @returns {Promise<Object>} A promise that resolves to an object containing the resources data.
+ * @swagger
+ * /resources:
+ *   get:
+ *     summary: Get all developer resources
+ *     description: Retrieves a list of all developer resources with their details
+ *     tags: [Resources]
+ *     responses:
+ *       200:
+ *         description: List of resources retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 resources:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: string
+ *                       name:
+ *                         type: string
+ *                       slug:
+ *                         type: string
+ *                       description:
+ *                         type: string
+ *                       url:
+ *                         type: string
+ *                       categories:
+ *                         type: array
+ *                         items:
+ *                           type: string
+ *                       keywords:
+ *                         type: array
+ *                         items:
+ *                           type: string
+ *                 count:
+ *                   type: integer
  */
 
 import resourcesData from '@/data/db/resources.json'

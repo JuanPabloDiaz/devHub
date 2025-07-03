@@ -26,11 +26,18 @@ export const Navigation = () => {
 
         <div className="flex gap-4 items-center">
           <Link
-            href="/"
+            href="/api/resources"
             className="hidden sm:flex items-center gap-1 font-medium text-gray-700 dark:text-gray-300 hover:text-[#00ffaa] dark:hover:text-[#00ffaa] transition-colors"
           >
             <TbCode className="text-lg" />
             <span>Resources</span>
+          </Link>
+           <Link
+            href="/api-docs"
+            className="hidden sm:flex items-center gap-1 font-medium text-gray-700 dark:text-gray-300 hover:text-[#00ffaa] dark:hover:text-[#00ffaa] transition-colors"
+          >
+            <TbCode className="text-lg" />
+            <span>API Docs</span>
           </Link>
           <Link
             href="https://github.com/JuanPabloDiaz/devHub"
