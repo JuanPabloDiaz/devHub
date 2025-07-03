@@ -123,4 +123,18 @@ code, pre, .font-mono {
   .category-swiper .swiper-slide {
     width: auto !important;
   }
+
+  /* Category Banner Swiper Styles */
+  .category-banner-swiper {
+    @apply w-full px-6;
+  }
+  
+  .category-banner-swiper .swiper-wrapper {
+    transition-timing-function: linear !important;
+    animation-timing-function: linear !important;
+  }
+  
+  .category-banner-swiper .swiper-slide {
+    width: auto !important;
+  }
 }

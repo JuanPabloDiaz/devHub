@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, FreeMode } from 'swiper/modules'
 import { TbCategory } from 'react-icons/tb'
 
-// Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/free-mode'
 
@@ -33,47 +32,31 @@ export default function CategorySwiper({
   }
 
   return (
-    <div className="w-full py-4">
-      {/* <div className="flex items-center justify-center mb-4">
-        <TbCategory className="text-green-500 text-xl mr-2" />
-        <h3 className="text-lg font-mono font-semibold text-gray-800 dark:text-gray-200">
-          Browse Categories
-        </h3>
-      </div> */}
-
+    <div className="w-full py-3 bg-gray-50/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-700">
       <Swiper
         ref={swiperRef}
         modules={[Autoplay, FreeMode]}
-        spaceBetween={12}
+        spaceBetween={16}
         slidesPerView="auto"
         freeMode={true}
+        allowTouchMove={false}
         autoplay={{
           delay: 0,
           disableOnInteraction: false,
-          pauseOnMouseEnter: true,
+          pauseOnMouseEnter: false,
         }}
-        speed={3000}
+        speed={5000}
         loop={true}
-        className="category-swiper"
-        onMouseEnter={() => {
-          if (swiperRef.current && swiperRef.current.swiper) {
-            swiperRef.current.swiper.autoplay.stop()
-          }
-        }}
-        onMouseLeave={() => {
-          if (swiperRef.current && swiperRef.current.swiper) {
-            swiperRef.current.swiper.autoplay.start()
-          }
-        }}
+        className="category-banner-swiper"
       >
         {/* Add "All Categories" option */}
         <SwiperSlide className="!w-auto">
           <button
             onClick={() => handleCategoryClick('')}
-            className={`px-4 py-2 rounded-full text-sm font-mono font-medium transition-all duration-300 whitespace-nowrap border-2 ${
+            className={`px-3 py-1 rounded-full text-xs font-mono font-medium transition-colors duration-300 whitespace-nowrap ${
               selectedCategory === ''
-                ? 'bg-green-500 text-white border-green-500 shadow-lg transform scale-105'
-                : 'bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-green-500 hover:text-green-500 hover:scale-105'
+                ? 'bg-green-500 text-white'
+                : 'bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-green-900/30'
             }`}
           >
             All Categories
@@ -85,14 +68,14 @@ export default function CategorySwiper({
           <SwiperSlide key={category.slug} className="!w-auto">
             <button
               onClick={() => handleCategoryClick(category.name)}
-              className={`px-4 py-2 rounded-full text-sm font-mono font-medium transition-all duration-300 whitespace-nowrap border-2 ${
+              className={`px-3 py-1 rounded-full text-xs font-mono font-medium transition-colors duration-300 whitespace-nowrap ${
                 selectedCategory === category.name
-                  ? 'bg-green-500 text-white border-green-500 shadow-lg transform scale-105'
-                  : 'bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-green-500 hover:text-green-500 hover:scale-105'
+                  ? 'bg-green-500 text-white'
+                  : 'bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-green-900/30'
               }`}
             >
               {category.name}
-              <span className="ml-2 text-xs opacity-70">
+              <span className="ml-1 text-xs opacity-70">
                 ({category.count || 0})
               </span>
             </button>
@@ -104,14 +87,14 @@ export default function CategorySwiper({
           <SwiperSlide key={`duplicate-${category.slug}`} className="!w-auto">
             <button
               onClick={() => handleCategoryClick(category.name)}
-              className={`px-4 py-2 rounded-full text-sm font-mono font-medium transition-all duration-300 whitespace-nowrap border-2 ${
+              className={`px-3 py-1 rounded-full text-xs font-mono font-medium transition-colors duration-300 whitespace-nowrap ${
                 selectedCategory === category.name
-                  ? 'bg-green-500 text-white border-green-500 shadow-lg transform scale-105'
-                  : 'bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-green-500 hover:text-green-500 hover:scale-105'
+                  ? 'bg-green-500 text-white'
+                  : 'bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-green-900/30'
               }`}
             >
               {category.name}
-              <span className="ml-2 text-xs opacity-70">
+              <span className="ml-1 text-xs opacity-70">
                 ({category.count || 0})
               </span>
             </button>

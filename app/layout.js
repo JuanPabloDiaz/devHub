@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { Navigation, Footer } from '@/components'
+import { Navigation, Footer, CategoryBanner } from '@/components'
 import GoogleAnalytics from '@/lib/analytics'
 
 const inter = Inter({
@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <GoogleAnalytics />
         <Navigation />
+        <CategoryBanner />
         <div className="flex-grow">{children}</div>
         <Footer />
       </body>

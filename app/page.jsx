@@ -1,12 +1,9 @@
-/**
- * Simple homepage that displays developer resources from the API
- */
-
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Container, CategorySwiper } from '@/components'
+import { Container } from '@/components'
 import {
   TbSearch,
   TbRefresh,
@@ -22,7 +19,9 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('')
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const selectedCategory = searchParams.get('category') || ''
 
   useEffect(() => {
     // Fetch resources and categories from the API
@@ -83,16 +82,18 @@ export default function HomePage() {
     fetchData()
   }, [])
 
-  // Calculate category counts based on resources
-  const categoriesWithCount = categories.map(category => {
-    const count = resources.filter(resource => 
-      resource.categories && resource.categories.includes(category.name)
-    ).length
-    return {
-      ...category,
-      count
+  // Handle category change
+  const handleCategoryChange = categoryName => {
+    const params = new URLSearchParams(searchParams.toString())
+    if (categoryName && categoryName !== '') {
+      params.set('category', categoryName)
+    } else {
+      params.delete('category')
     }
-  })
+
+    const newUrl = params.toString() ? `/?${params.toString()}` : '/'
+    router.push(newUrl)
+  }
 
   // Filter resources based on search term and category
   const filteredResources = resources.filter(resource => {
@@ -183,7 +184,7 @@ export default function HomePage() {
                 <select
                   className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-[#5a00ff] focus:border-[#5a00ff] font-mono text-sm appearance-none backdrop-blur-sm"
                   value={selectedCategory}
-                  onChange={e => setSelectedCategory(e.target.value)}
+                  onChange={e => handleCategoryChange(e.target.value)}
                 >
                   <option value="">All Categories</option>
                   {categories.map(category => (
@@ -207,17 +208,6 @@ export default function HomePage() {
         </Container>
       </div>
 
-      {/* Category Swiper Section */}
-      <div className="bg-gray-50/50 dark:bg-gray-900/50 border-y border-gray-200 dark:border-gray-700">
-        <Container size="lg">
-          <CategorySwiper 
-            categories={categoriesWithCount}
-            selectedCategory={selectedCategory}
-            onCategorySelect={setSelectedCategory}
-          />
-        </Container>
-      </div>
-
       {/* Countries grid */}
       <Container size="lg" className="py-12">
         <div className="flex justify-between items-center mb-8">
@@ -238,7 +228,7 @@ export default function HomePage() {
             <button
               onClick={() => {
                 setSearchTerm('')
-                setSelectedCategory('')
+                handleCategoryChange('')
               }}
               className="btn btn-primary mt-4"
             >
