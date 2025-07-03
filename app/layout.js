@@ -15,6 +15,11 @@ export const metadata = {
     'Discover helpful resources for developers including tools, libraries, frameworks, and learning materials.',
   keywords:
     'developer resources, programming tools, web development, libraries, frameworks, learning materials',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({ children }) {
