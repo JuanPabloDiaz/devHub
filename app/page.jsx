@@ -7,7 +7,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Container } from '@/components'
-import { TbSearch, TbRefresh, TbInfoCircle, TbCategory, TbTerminal2, TbCode } from 'react-icons/tb'
+import {
+  TbSearch,
+  TbRefresh,
+  TbInfoCircle,
+  TbCategory,
+  TbTerminal2,
+  TbCode,
+} from 'react-icons/tb'
 
 export default function HomePage() {
   const [resources, setResources] = useState([])
@@ -95,7 +102,7 @@ export default function HomePage() {
       <Container size="lg" className="py-12">
         <div className="flex flex-col items-center justify-center min-h-[50vh]">
           <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-6"></div>
-          <h1 className="text-2xl font-bold">Loading Resources...</h1>
+          <h1 className="text-2xl font-bold">Loading 1000+ Resources...</h1>
           <p className="text-gray-500 dark:text-gray-400 mt-2">
             Please wait while we fetch the data
           </p>
@@ -141,8 +148,11 @@ export default function HomePage() {
               <span className="text-[#00ffaa] animate-blink">_</span>
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-              Discover <span className="font-mono text-[#00ffaa] font-bold">{resources.length}</span> curated tools and resources for
-              developers
+              Discover{' '}
+              <span className="font-mono text-[#00ffaa] font-bold">
+                {resources.length}
+              </span>{' '}
+              curated tools and resources for developers
             </p>
 
             {/* Search and filter */}
@@ -151,7 +161,7 @@ export default function HomePage() {
                 <TbSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-[#00ffaa] dark:text-[#00ffaa]" />
                 <input
                   type="text"
-                  placeholder="Search resources..." 
+                  placeholder="Search resources..."
                   className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-[#00ffaa] focus:border-[#00ffaa] font-mono text-sm backdrop-blur-sm"
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
@@ -172,7 +182,11 @@ export default function HomePage() {
                   ))}
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
-                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <svg
+                    className="fill-current h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                   </svg>
                 </div>
@@ -213,7 +227,10 @@ export default function HomePage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredResources.map(resource => (
-              <div key={resource.id} className="resource-card group transition-all duration-300 hover:transform hover:-translate-y-1">
+              <div
+                key={resource.id}
+                className="resource-card group transition-all duration-300 hover:transform hover:-translate-y-1"
+              >
                 <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-white to-gray-50 dark:from-gray-800 dark:to-gray-900">
                   <h3 className="font-mono text-lg font-bold truncate text-gray-900 dark:text-gray-100">
                     {resource.name}
@@ -226,7 +243,7 @@ export default function HomePage() {
                   <p className="text-gray-700 dark:text-gray-300 line-clamp-3 h-20 mb-3">
                     {resource.description || 'No description available'}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-2 text-xs mb-4">
                     {resource.categories &&
                       resource.categories.slice(0, 3).map(category => (
@@ -256,7 +273,7 @@ export default function HomePage() {
                     href={resource.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 text-center text-[#5a00ff] hover:text-[#ff4082] py-3 transition-colors flex-1 font-medium border-l border-gray-200 dark:border-gray-700"
+                    className="flex items-center justify-center gap-2 text-center text-gray-900 dark:text-gray-100 hover:text-[#00ffaa] py-3 transition-colors flex-1 font-medium"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -272,7 +289,7 @@ export default function HomePage() {
                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                       />
                     </svg>
-                    Visit
+                    Visit juan
                   </a>
                 </div>
               </div>
