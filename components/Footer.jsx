@@ -45,7 +45,7 @@ const Footer = () => {
             </div>
 
             <p className="text-gray-500 dark:text-gray-400 text-sm flex flex-wrap items-center gap-1 font-mono">
-              <span className="text-gray-400 dark:text-gray-500">// </span>
+              <span className="text-gray-400 dark:text-gray-500">{'//'}</span>
               <span>Developed by</span>
               <Link
                 href="https://github.com/JuanPabloDiaz"
