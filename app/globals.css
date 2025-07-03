@@ -41,7 +41,9 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-code, pre, .font-mono {
+code,
+pre,
+.font-mono {
   font-family: 'JetBrains Mono', monospace;
 }
 
@@ -73,7 +75,7 @@ code, pre, .font-mono {
   .code-block {
     @apply bg-[rgb(var(--code-bg))] p-4 rounded-md font-mono text-sm leading-relaxed border border-gray-200 dark:border-gray-700 overflow-x-auto;
   }
-  
+
   .resource-card {
     @apply bg-white dark:bg-[rgb(var(--card))] border border-gray-200 dark:border-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden hover:border-[#00ffaa]/50 dark:hover:border-[#00ffaa]/50;
   }
@@ -85,16 +87,16 @@ code, pre, .font-mono {
   .glassmorphism {
     @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/60;
   }
-  
+
   .grid-pattern {
     background-size: 40px 40px;
-    background-image: 
+    background-image:
       linear-gradient(to right, rgba(0, 255, 170, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 255, 170, 0.05) 1px, transparent 1px);
   }
-  
+
   .dark .grid-pattern {
-    background-image: 
+    background-image:
       linear-gradient(to right, rgba(0, 255, 170, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 255, 170, 0.05) 1px, transparent 1px);
   }
@@ -115,11 +117,11 @@ code, pre, .font-mono {
   .category-swiper {
     @apply w-full px-4;
   }
-  
+
   .category-swiper .swiper-wrapper {
     transition-timing-function: linear;
   }
-  
+
   .category-swiper .swiper-slide {
     width: auto !important;
   }
@@ -128,12 +130,12 @@ code, pre, .font-mono {
   .category-banner-swiper {
     @apply w-full px-6;
   }
-  
+
   .category-banner-swiper .swiper-wrapper {
     transition-timing-function: linear !important;
     animation-timing-function: linear !important;
   }
-  
+
   .category-banner-swiper .swiper-slide {
     width: auto !important;
   }

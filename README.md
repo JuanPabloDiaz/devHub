@@ -2,8 +2,9 @@
 
 ## Demo
 
-- [Frontend]()
-- [Backend]()
+- [Frontend](https://dev-hub-geek.vercel.app)
+- [Backend](https://dev-hub-geek.vercel.app/api/resources)
+- [API Documentation](https://dev-hub-geek.vercel.app/api-docs)
 
 ## Project Architecture
 
@@ -19,39 +20,39 @@ graph TD
     Client[Web Client] --> NextJS[Next.js App]
     NextJS --> Pages[Pages]
     NextJS --> Components[Components]
-    
+
     %% Pages
     Pages --> HomePage[Home Page<br>/app/page.jsx]
     Pages --> ResourcePage[Resource Detail<br>/app/resources/slug/page.jsx]
-    
+
     %% Components
     Components --> UI[UI Components<br>/components]
-    
+
     %% Backend
     NextJS --> APIRoutes[API Routes]
     APIRoutes --> ResourcesAPI[Resources API<br>/app/api/resources/route.js]
     APIRoutes --> ResourceAPI[Resource Detail API<br>/app/api/resources/slug/route.js]
     APIRoutes --> CategoriesAPI[Categories API<br>/app/api/categories/route.js]
-    
+
     %% Data
     ResourcesAPI --> ResourcesData[Resources Data<br>/data/db/resources.json]
     ResourceAPI --> ResourcesData
     CategoriesAPI --> CategoriesData[Categories Data<br>/data/db/categories.json]
-    
+
     %% Utilities
     ResourcesAPI --> Utils[Utilities<br>/utils]
     ResourceAPI --> Utils
     CategoriesAPI --> Utils
-    
+
     %% Styling
     NextJS --> Styling[Styling]
     Styling --> Tailwind[TailwindCSS]
     Styling --> CSS[Global CSS<br>/app/globals.css]
-    
+
     %% Deployment
     NextJS --> Build[Build Process]
     Build --> StaticSite[Static Site<br>Netlify/Vercel]
-    
+
     %% Apply classes
     Client:::frontend
     NextJS:::frontend
@@ -63,25 +64,29 @@ graph TD
     Styling:::frontend
     Tailwind:::frontend
     CSS:::frontend
-    
+
     APIRoutes:::backend
     ResourcesAPI:::backend
     ResourceAPI:::backend
     CategoriesAPI:::backend
     Utils:::backend
-    
+
     ResourcesData:::data
     CategoriesData:::data
-    
+
     Build:::deployment
     StaticSite:::deployment
 ```
-[Learn more](./architecture-diagram.md) about the architecture diagram. ([Spanish](./architecture-diagram-es.md))
+
+[Learn more](./architecture-diagram.md) about the architecture diagram.
+([Spanish](./architecture-diagram-es.md))
 
 ## Features
 
-- **Resource List**: Browse all developer resources with search and category filtering
-- **Resource Details**: View detailed information about each developer resource including:
+- **Resource List**: Browse all developer resources with search and category
+  filtering
+- **Resource Details**: View detailed information about each developer resource
+  including:
   - Name
   - Description
   - URL
@@ -106,12 +111,14 @@ graph TD
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd devHub
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 # or
@@ -119,13 +126,15 @@ yarn install
 ```
 
 3. Run the development server:
+
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see
+   the application.
 
 ## Project Structure
 
@@ -141,7 +150,8 @@ yarn dev
 ## API Routes
 
 - `GET /api/resources`: Returns a list of all resources with basic information
-- `GET /api/resources/[slug]`: Returns detailed information about a specific resource
+- `GET /api/resources/[slug]`: Returns detailed information about a specific
+  resource
 
 ## Building for Production
 
@@ -167,9 +177,11 @@ yarn start
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for
+details.
 
 ## Acknowledgements
 
 - Resource data sourced from various public domain sources
-- The collection of Dev resources are created by the community in [dev-resources](https://github.com/marcelscruz/dev-resources)
+- The collection of Dev resources are created by the community in
+  [dev-resources](https://github.com/marcelscruz/dev-resources)
