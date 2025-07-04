@@ -2,8 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, FreeMode } from 'swiper/modules'
-import { TbCategory } from 'react-icons/tb'
+import { Autoplay, FreeMode, Mousewheel } from 'swiper/modules'
 
 import 'swiper/css'
 import 'swiper/css/free-mode'
@@ -35,17 +34,18 @@ export default function CategorySwiper({
     <div className="w-full py-3 bg-gray-50/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-700">
       <Swiper
         ref={swiperRef}
-        modules={[Autoplay, FreeMode]}
+        modules={[Autoplay, FreeMode, Mousewheel]}
         spaceBetween={16}
         slidesPerView="auto"
         freeMode={true}
-        allowTouchMove={false}
+        allowTouchMove={true}
+        mousewheel={{ forceToAxis: true }}
         autoplay={{
           delay: 0,
           disableOnInteraction: false,
-          pauseOnMouseEnter: false,
+          pauseOnMouseEnter: true,
         }}
-        speed={5000}
+        speed={300}
         loop={true}
         className="category-banner-swiper"
       >
