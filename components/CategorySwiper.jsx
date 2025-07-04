@@ -6,6 +6,8 @@ import { Autoplay, FreeMode, Mousewheel } from 'swiper/modules'
 
 import 'swiper/css'
 import 'swiper/css/free-mode'
+import 'swiper/css/autoplay'
+import 'swiper/css/mousewheel'
 
 export default function CategorySwiper({
   categories,
@@ -17,8 +19,22 @@ export default function CategorySwiper({
   useEffect(() => {
     // Auto-start the swiper when component mounts
     if (swiperRef.current && swiperRef.current.swiper) {
+      // Ensure autoplay is running
       swiperRef.current.swiper.autoplay.start()
+      
+      // Force update to apply all settings
+      swiperRef.current.swiper.update()
     }
+    
+    // Re-initialize swiper when window is resized
+    const handleResize = () => {
+      if (swiperRef.current && swiperRef.current.swiper) {
+        swiperRef.current.swiper.update()
+      }
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   const handleCategoryClick = categoryName => {
@@ -44,6 +60,7 @@ export default function CategorySwiper({
           delay: 0,
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
+          waitForTransition: false,
         }}
         speed={300}
         loop={true}
