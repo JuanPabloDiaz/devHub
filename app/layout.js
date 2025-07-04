@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <GoogleAnalytics />
         <Navigation />
         <CategoryBanner />
-        <div className="flex-grow">{children}</div>
+        <div className="flex-grow main-content-with-sidebar">{children}</div>
         <Footer />
       </body>
     </html>

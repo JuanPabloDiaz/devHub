@@ -28,7 +28,7 @@ export const Container = ({
   return (
     <Element
       {...rest}
-      className={`px-4 sm:px-6 w-full ${sizeClasses[size]} mx-auto ${className || ''}`}
+      className={`px-4 sm:px-6 w-full ${sizeClasses[size]} mx-auto transition-all duration-300 md:ml-12 lg:ml-12 ${className || ''}`}
     >
       {children}
     </Element>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Container, DesktopScrollSidebar } from '@/components'
+import { Container, DesktopScrollSidebar, LeftSidebar } from '@/components'
 import {
   TbSearch,
   TbRefresh,
@@ -325,6 +325,15 @@ export default function HomePage() {
       
       {/* Desktop Scroll Sidebar - appears only on desktop when scrolling */}
       <DesktopScrollSidebar 
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategorySelect={handleCategoryChange}
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+      />
+      
+      {/* Left Sidebar - collapsible sidebar on the left */}
+      <LeftSidebar 
         categories={categories}
         selectedCategory={selectedCategory}
         onCategorySelect={handleCategoryChange}

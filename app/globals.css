@@ -48,6 +48,20 @@ pre,
 }
 
 @layer components {
+  /* Main content adjustment for sidebar */
+  .main-content-with-sidebar {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Sidebar styles */
+  .sidebar-collapsed {
+    @apply w-12 transition-all duration-300 ease-in-out;
+  }
+
+  .sidebar-expanded {
+    @apply w-64 transition-all duration-300 ease-in-out;
+  }
+
   .btn {
     @apply px-4 py-2 rounded-md font-medium transition-all duration-300 inline-flex items-center justify-center gap-2;
   }
