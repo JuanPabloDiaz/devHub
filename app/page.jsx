@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Container } from '@/components'
+import { Container, DesktopScrollSidebar } from '@/components'
 import {
   TbSearch,
   TbRefresh,
@@ -22,6 +22,16 @@ export default function HomePage() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const selectedCategory = searchParams.get('category') || ''
+
+  // Use effect to react to URL parameter changes
+  useEffect(() => {
+    // When URL parameters change, update the local state to match
+    const categoryFromUrl = searchParams.get('category') || '';
+    console.log('URL category changed:', categoryFromUrl);
+    
+    // This will re-render the component and ensure filtering works correctly
+    // No need to set any state here since selectedCategory is derived directly from searchParams
+  }, [searchParams]);
 
   useEffect(() => {
     // Fetch resources and categories from the API
@@ -104,7 +114,8 @@ export default function HomePage() {
 
     const matchesCategory =
       selectedCategory === '' ||
-      (resource.categories && resource.categories.includes(selectedCategory))
+      (resource.categories && Array.isArray(resource.categories) && 
+       resource.categories.some(cat => cat.toLowerCase() === selectedCategory.toLowerCase()))
 
     return matchesSearch && matchesCategory
   })
@@ -301,7 +312,7 @@ export default function HomePage() {
                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                       />
                     </svg>
-                    Visit juan
+                    Visit
                   </a>
                 </div>
               </div>
@@ -309,6 +320,15 @@ export default function HomePage() {
           </div>
         )}
       </Container>
+      
+      {/* Desktop Scroll Sidebar - appears only on desktop when scrolling */}
+      <DesktopScrollSidebar 
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategorySelect={handleCategoryChange}
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+      />
     </main>
   )
 }

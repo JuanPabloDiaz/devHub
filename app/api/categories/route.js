@@ -27,12 +27,38 @@
  */
 
 import categoriesData from '@/data/db/categories.json'
+import resourcesData from '@/data/db/resources.json'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
+  // Create a map to store the count of resources for each category
+  const categoryCounts = {}
+
+  // Initialize counts to 0 for all categories
+  for (const category of categoriesData.data) {
+    categoryCounts[category.name] = 0
+  }
+
+  // Iterate over resources to count them by category
+  for (const resource of resourcesData.data) {
+    if (resource.categories && Array.isArray(resource.categories)) {
+      for (const categoryName of resource.categories) {
+        if (categoryCounts.hasOwnProperty(categoryName)) {
+          categoryCounts[categoryName]++
+        }
+      }
+    }
+  }
+
+  // Add the count to each category object
+  const categoriesWithCounts = categoriesData.data.map(category => ({
+    ...category,
+    count: categoryCounts[category.name] || 0,
+  }))
+
   // Add cache control headers to prevent caching
   const response = NextResponse.json({
-    categories: categoriesData.data,
+    categories: categoriesWithCounts,
     count: categoriesData.count,
   })
 
