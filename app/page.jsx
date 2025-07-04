@@ -107,10 +107,14 @@ export default function HomePage() {
 
   // Filter resources based on search term and category
   const filteredResources = resources.filter(resource => {
+    const searchLower = searchTerm.toLowerCase();
     const matchesSearch =
-      resource.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      resource.name.toLowerCase().includes(searchLower) ||
       (resource.description &&
-        resource.description.toLowerCase().includes(searchTerm.toLowerCase()))
+        resource.description.toLowerCase().includes(searchLower)) ||
+      (resource.keywords &&
+        Array.isArray(resource.keywords) &&
+        resource.keywords.some(keyword => keyword.toLowerCase().includes(searchLower)))
 
     const matchesCategory =
       selectedCategory === '' ||
@@ -181,19 +185,26 @@ export default function HomePage() {
             {/* Search and filter */}
             <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto mb-8">
               <div className="relative flex-1">
-                <TbSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-[#00ffaa] dark:text-[#00ffaa]" />
+                <TbSearch className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#00ffaa] dark:text-[#00ffaa]" />
                 <input
                   type="text"
                   placeholder="Search resources..."
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-[#00ffaa] focus:border-[#00ffaa] font-mono text-sm backdrop-blur-sm"
+                  className="w-full pl-10 pr-12 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-[#00ffaa] focus:border-[#00ffaa] font-mono text-sm backdrop-blur-sm"
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
                 />
+                <button
+                  type="button"
+                  className="absolute right-0 top-0 h-full px-4 text-gray-400 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-200 transition-colors"
+                  aria-label="Search"
+                >
+                  <TbSearch className="text-lg" />
+                </button>
               </div>
               <div className="relative">
                 <TbCategory className="absolute left-3 top-1/2 -translate-y-1/2 text-[#5a00ff] dark:text-[#5a00ff]" />
                 <select
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-[#5a00ff] focus:border-[#5a00ff] font-mono text-sm appearance-none backdrop-blur-sm"
+                  className="w-full pl-10 pr-12 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-[#00ffaa] focus:border-[#00ffaa] font-mono text-sm backdrop-blur-sm"
                   value={selectedCategory}
                   onChange={e => handleCategoryChange(e.target.value)}
                 >
